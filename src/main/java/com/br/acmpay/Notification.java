@@ -5,11 +5,10 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
-public class Transaction {
+public class Notification {
     private long id;
 
     private LocalDateTime dataTransaction;

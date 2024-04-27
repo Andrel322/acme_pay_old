@@ -1,55 +1,24 @@
 package com.br.acmpay;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class Customer {
-    private String customerDocument;
+    private long id;
 
-    private List<Account> costumerAccounts;
+    private String name;
 
-    private String customerName;
+    private String email;
 
-    private String customerEmail;
+    private String phone;
 
-    private String customerPhone;
+    private String document;
 
-    public String getCustomerDocument() {
-        return customerDocument;
-    }
-
-    public void setCustomerDocument(String customerDocument) {
-        this.customerDocument = customerDocument;
-    }
-
-    public List<Account> getCostumerAccounts() {
-        return costumerAccounts;
-    }
-
-    public void setCostumerAccounts(List<Account> costumerAccounts) {
-        this.costumerAccounts = costumerAccounts;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
-
-    public String getCustomerPhone() {
-        return customerPhone;
-    }
-
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
-    }
+    private List<Account> accounts;
 }

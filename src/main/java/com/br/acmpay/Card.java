@@ -9,14 +9,12 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Account {
+public class Card {
     private long id;
 
-    private String number;
+    private String flag;
 
-    private String agency;
+    private BigDecimal card_limit;
 
-    private BigDecimal balance;
-
-    private Customer customer;
+    private Account cardAccount;
 }
