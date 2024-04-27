@@ -38,24 +38,25 @@ public class Account {
     }
 
     public void withdraw(BigDecimal amount) throws BalanceWithdrawException {
-        if (this.balance.compareTo(amount) >= 0) {
-            this.balance.subtract(amount);
-        } else {
-            throw new BalanceWithdrawException("Error withdraw");
-        }
+        checkBalance(amount);
+
+        this.balance.subtract(amount);
     }
 
     public Transaction createTransaction(BigDecimal amount, Account destinationAccount) throws BalanceWithdrawException {
-        if (this.balance.compareTo(amount) >= 0) {
-            Transaction transaction = Transaction.builder().sourceAccount(this).amount(amount).destinationAccount(destinationAccount).dataTransaction(LocalDateTime.now()).build();
+        checkBalance(amount);
 
-            this.balance.subtract(amount);
-            destinationAccount.deposit(amount);
-            transactions.add(transaction);
+        Transaction transaction = Transaction.builder().sourceAccount(this).amount(amount)
+                .destinationAccount(destinationAccount).dataTransaction(LocalDateTime.now()).build();
 
-            return transaction;
-        } else {
-            throw new BalanceWithdrawException("Error withdraw");
-        }
+        this.balance.subtract(amount);
+        destinationAccount.deposit(amount);
+        transactions.add(transaction);
+
+        return transaction;
+    }
+
+    private void checkBalance(BigDecimal amount) throws BalanceWithdrawException {
+        if (this.balance.compareTo(amount) < 0) throw new BalanceWithdrawException("Error withdraw");
     }
 }
