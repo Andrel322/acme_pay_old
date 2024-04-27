@@ -50,6 +50,7 @@ public class Account {
             Transaction transaction = Transaction.builder().sourceAccount(this).amount(amount).destinationAccount(destinationAccount).dataTransaction(LocalDateTime.now()).build();
 
             this.balance.subtract(amount);
+            destinationAccount.deposit(amount);
             transactions.add(transaction);
 
             return transaction;
