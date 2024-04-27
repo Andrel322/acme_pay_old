@@ -44,12 +44,11 @@ public class Account {
     }
 
     public Transaction createTransaction(BigDecimal amount, Account destinationAccount) throws BalanceWithdrawException {
-        checkBalance(amount);
+        this.withdraw(amount);
 
         Transaction transaction = Transaction.builder().sourceAccount(this).amount(amount)
                 .destinationAccount(destinationAccount).dataTransaction(LocalDateTime.now()).build();
 
-        this.balance.subtract(amount);
         destinationAccount.deposit(amount);
         transactions.add(transaction);
 
