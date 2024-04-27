@@ -27,6 +27,8 @@ public class Account {
 
     private List<Card> cards;
 
+    private List<Transaction> transactions;
+
     private LocalDateTime createData;
 
     private LocalDateTime updateData;
@@ -38,6 +40,19 @@ public class Account {
     public void withdraw(BigDecimal amount) throws BalanceWithdrawException {
         if (this.balance.compareTo(amount) >= 0) {
             this.balance.subtract(amount);
+        } else {
+            throw new BalanceWithdrawException("Error withdraw");
+        }
+    }
+
+    public Transaction createTransaction(BigDecimal amount, Account destinationAccount) throws BalanceWithdrawException {
+        if (this.balance.compareTo(amount) >= 0) {
+            Transaction transaction = Transaction.builder().sourceAccount(this).amount(amount).destinationAccount(destinationAccount).dataTransaction(LocalDateTime.now()).build();
+
+            this.balance.subtract(amount);
+            transactions.add(transaction);
+
+            return transaction;
         } else {
             throw new BalanceWithdrawException("Error withdraw");
         }
