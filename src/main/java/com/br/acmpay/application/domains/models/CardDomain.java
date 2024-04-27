@@ -1,4 +1,4 @@
-package com.br.acmpay.domain;
+package com.br.acmpay.application.domains.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,12 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Card {
+public class CardDomain {
     private long id;
 
     private String flag;
 
     private BigDecimal card_limit;
 
-    private Account cardAccount;
+    private AccountDomain cardAccount;
 }

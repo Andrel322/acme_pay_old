@@ -1,7 +1,6 @@
-package com.br.acmpay.domain;
+package com.br.acmpay.application.domains.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,15 +10,14 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Transaction {
+public class NotificationDomain {
     private long id;
 
     private LocalDateTime dataTransaction;
 
-    private Account sourceAccount;
+    private AccountDomain sourceAccount;
 
-    private Account destinationAccount;
+    private AccountDomain destinationAccount;
 
     private BigDecimal amount;
 }
